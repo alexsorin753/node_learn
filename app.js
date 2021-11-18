@@ -12,3 +12,10 @@ const server = http.createServer((req, res) => {
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}`)
 });
+
+
+// exit program after 10 seconds
+setTimeout(() => {
+    process.exitCode = 1;
+    process.exit(1)
+}, 10000);
