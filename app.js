@@ -21,9 +21,11 @@
 // }, 10000);
 
 
-
+require('dotenv').config(); // not working
 const express = require('express');
-const app = express()
+const app = express();
+
+process.env.v8 = 'node';
 
 app.get('/', (req, res) => {
     res.send('Hello World')
@@ -34,6 +36,7 @@ app.listen(3000, () => console.log('Server ready - http://localhost:3000/'));
 setTimeout(() => {
     console.log(process.env.USER_ID)
     console.log(process.env.USER_KEY)
+    console.log(process.env.v8)
     process.kill(process.pid, 'SIGTERM');
 }, 1000);
 
