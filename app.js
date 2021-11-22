@@ -21,17 +21,18 @@
 // }, 10000);
 
 
-require('dotenv').config(); // not working
+require('dotenv').config(); // or use in cmd: node -r dotenv/config app.js;
+
 const express = require('express');
 const app = express();
 
-process.env.v8 = 'node';
+process.env.v8 = 'local enviornamental variable - assigned using process.env';
 
 app.get('/', (req, res) => {
     res.send('Hello World')
-})
+});
 
-app.listen(3000, () => console.log('Server ready - http://localhost:3000/'));
+app.listen(process.env.port, () => console.log(`Server ready - http://${process.env.host}:${process.env.port}/`));
 
 setTimeout(() => {
     console.log(process.env.USER_ID)
