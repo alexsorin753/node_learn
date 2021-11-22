@@ -19,25 +19,40 @@
 //     process.exitCode = 1;
 //     process.exit(1)
 // }, 10000);
+// -----------------
 
+// with dotenv required inside file
+// require('dotenv').config(); // or use in cmd: node -r dotenv/config app.js;
+// const port = process.env.port;
+// const host = process.env.host;
 
-require('dotenv').config(); // or use in cmd: node -r dotenv/config app.js;
+// inport external module that contain the dotenv variable
+// const ex_env = require('./config_env'); // inporting module that contain the enviornamental variable
+// const port = ex_env.port;
+// const host = ex_env.host;
+
+// you can use the destructuring to pull out what you need
+const {port, host} = require('./config_env');
+
 
 const express = require('express');
 const app = express();
 
 process.env.v8 = 'local enviornamental variable - assigned using process.env';
 
+
 app.get('/', (req, res) => {
     res.send('Hello World')
 });
 
-app.listen(process.env.port, () => console.log(`Server ready - http://${process.env.host}:${process.env.port}/`));
+app.listen(port, () => console.log(`Server ready - http://${host}:${port}/`));
 
 setTimeout(() => {
     console.log(process.env.USER_ID)
     console.log(process.env.USER_KEY)
     console.log(process.env.v8)
+    
     process.kill(process.pid, 'SIGTERM');
+
 }, 1000);
 
