@@ -47,11 +47,30 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => console.log(`Server ready - http://${host}:${port}/`));
 
+//https://nodejs.dev/learn/nodejs-accept-arguments-from-the-command-line
+const args = process.argv.slice(2);
+const args_min = require('minimist')(process.argv.slice(2));
+
+//https://nodejs.dev/learn/output-to-the-command-line-using-nodejs
+const doSomething = () => console.log('test')
+const mesureDoingSomething = () => {
+    console.time('doSomething()')
+    doSomething()
+    console.timeEnd('doSomething()')
+}
+mesureDoingSomething()
+
 setTimeout(() => {
     console.log(process.env.USER_ID)
     console.log(process.env.USER_KEY)
     console.log(process.env.v8)
     
+    args.forEach((val, index) => {
+        console.log(`${index}: ${val}`)
+    });
+    console.log(args_min['name']);
+
+
     process.kill(process.pid, 'SIGTERM');
 
 }, 1000);
