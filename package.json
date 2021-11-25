@@ -3,6 +3,7 @@
     "chalk": "^4.1.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "inquirer": "^8.2.0",
     "minimist": "^1.2.5",
     "progress": "^2.0.3"
   }
