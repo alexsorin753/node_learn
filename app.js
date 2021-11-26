@@ -7,6 +7,7 @@ const chalk = require('chalk');
 const ProgressBar = require('progress');
 // const { rawListeners } = require('process');
 const inquirer = require('inquirer');
+const ran = require('./my_modules/first_module');
 
 process.env.v8 = 'local enviornamental variable - assigned using process.env';
 
@@ -26,7 +27,7 @@ const doSomething = () => {
     let num = 0;
     for(let e = 0; e < 3000; e++) {
         num++;
-        console.log(num)
+        console.log(ran.thousand_random())
     }
 };
 const measureDoingSomething = () => {
@@ -93,6 +94,8 @@ setTimeout(() => {
     
 
     // exit after setInterval finishes
+    console.log(chalk.greenBright("module.exports:"))
+    console.log(ran)
     console.log(chalk.red("Terminating:"));
     setInterval(() => {
         bar.tick();
