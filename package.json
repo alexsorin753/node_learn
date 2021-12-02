@@ -10,6 +10,7 @@
   "scripts": {
     "//": "https://nodejs.dev/learn/an-introduction-to-the-npm-package-manager#running-tasks",
     "start-dev": "node lib/server-development",
+    "app": "node app.js",
     "start": "node lib/server-production"
   },
   "//": "this is a npm json comment - https://stackoverflow.com/a/14221781/15458933"
