@@ -2,8 +2,9 @@ doctype html
 html(lang="en")
   head
     title= pageTitle
-    script(type='text/javascript').
-      if (foo) bar(1 + 5)
+    // you dont need to include the "public" folder in path
+    link(rel="stylesheet" href="/styles/styles.css")
+    script(src='/scripts/first_script.js')
   body
     h1 Pug - node template engine
     #container.col
@@ -14,6 +15,11 @@ html(lang="en")
       p.
         Pug is a terse and simple templating language with a
         strong focus on performance and powerful features.
-    button Click Me !
-    p(style = "display: inline-block; margin-left: 10px;") Button count : 
-      span(style = 'color: green;') 0
+    button.count_btn Click Me !
+    p.button_count Button count : 
+      span 0
+
+
+    //-       <link rel="stylesheet" href="./css/practice-JS-only.css">
+    //- <link rel="stylesheet" href="./font_awesome/css/all.css">
+    //- <script src="./javascript/practice-JS-only.js"></script>

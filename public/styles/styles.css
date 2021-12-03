@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    
+}
+
+body, html {
+    font-size: 62.5%;
+    background-color: bisque;
+    scroll-behavior: smooth;
+}
+
+.count_btn {
+    font-size: 1.8rem;
+}
+
+.button_count {
+    display: inline-block; 
+    margin-left: 10px;
+    font-size: 2rem;
+}
+.button_count > span {
+    color: red;
+}
