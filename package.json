@@ -15,5 +15,8 @@
     "app_dev": "node app_dev.js",
     "app_pr": "node app_pr.js"
   },
-  "//": "this is a npm json comment - https://stackoverflow.com/a/14221781/15458933"
+  "//": "this is a npm json comment - https://stackoverflow.com/a/14221781/15458933",
+  "devDependencies": {
+    "babel": "^6.23.0"
+  }
 }
