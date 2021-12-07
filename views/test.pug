@@ -6,18 +6,18 @@ html(lang="en")
     link(rel="stylesheet" href="/styles/styles.css")
     script(src='/scripts/first_script.js')
   body
-    h1 Pug - node template engine
-    #container.col
-      if youAreUsingPug
-        p You are amazing
-      else
-        p Get on it!
-      p.
-        Pug is a terse and simple templating language with a
-        strong focus on performance and powerful features.
-    button.count_btn Click Me !
-    p.button_count Button count : 
-      span 0
+    header First Pug Page
+    main
+      .count_btn
+        button Count Button !
+        p Button count : 
+          span 0
+      .worker_btn 
+        button Worker Button !
+        p Worker count : 
+          span 0
+        p Worker Status : 
+          span Pending
 
 
     //-       <link rel="stylesheet" href="./css/practice-JS-only.css">

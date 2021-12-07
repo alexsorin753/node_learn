@@ -1,23 +1,42 @@
 * {
     box-sizing: border-box;
-    
 }
-
 body, html {
     font-size: 62.5%;
-    background-color: bisque;
     scroll-behavior: smooth;
+    margin: 0;
+}
+body {
+    background-color: bisque;    
+}
+body > header {
+    font-size: 3rem;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: cadetblue;
+    padding: 3rem;
+    text-align: center;
+    color: bisque;
 }
 
-.count_btn {
+
+.count_btn, .worker_btn {
+    padding: 2rem;
+}
+.count_btn > button, 
+.worker_btn > button {
     font-size: 1.8rem;
 }
-
-.button_count {
+.count_btn > p, 
+.worker_btn > p:first-of-type {
     display: inline-block; 
     margin-left: 10px;
     font-size: 2rem;
 }
-.button_count > span {
+.count_btn > p > span,
+.worker_btn > p > span {
     color: red;
+}
+
+.worker_btn > p:last-of-type {
+    font-size: 2rem;
 }
