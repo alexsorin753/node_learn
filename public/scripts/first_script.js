@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let count_num = 0
         btn.addEventListener('click', function() {
             if(count_num === 0) count.children[0].style.color = 'green';
-            count.children[0].textContent = ++count_num
-        });        
+            count.children[0].textContent = ++count_num;
+        });
+
+
     })(); 
 
 
@@ -35,5 +37,27 @@ document.addEventListener('DOMContentLoaded', function() {
             status.style.color = 'green';
         }
     })();
+
+    // demonstrating asynchronous code using - setTimeout()
+    (function async_setT() {
+        const elem = document.getElementsByClassName('async_example')[0];
+
+        console.time('time_this');
+        function insert(el) {
+            elem.insertAdjacentHTML('beforeend', `
+                <p>Message Synchronous ${el + 1}</p>
+            `);
+        }
+        for(let e = 0; e < 3; e++) {
+            if(e !== 1) insert(e);
+            else setTimeout(insert, 1000, e); // passing parameters to  https://mzl.la/3pFVb0u
+        }
+        elem.insertAdjacentHTML('beforeend', `
+            <p>Message Synchronous outside the loop ${0}</p>
+        `);
+        console.timeEnd('time_this');         
+    })();
+
+    // clock set inretval
 })
 
