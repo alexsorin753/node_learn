@@ -1,12 +1,17 @@
 * {
     box-sizing: border-box;
 }
+html {
+    position: relative;
+    min-height: 100%;
+}
 body, html {
     font-size: 62.5%;
     scroll-behavior: smooth;
     margin: 0;
 }
 body {
+    margin-bottom: 5rem;
     background-color: bisque;
 }
 body > header {
@@ -16,21 +21,23 @@ body > header {
     padding: 3rem;
     text-align: center;
     color: bisque;
+
 }
-body > main {
-    min-height: 70rem;
+body > main > div {
+    margin-bottom: 1rem;
 }
 /*resolve footer*/
 footer {
-    position: relative;
-    display: block;
+    position: absolute;
+    bottom: 0;
     width: 100%;
     height: 5rem;
     background-color: darksalmon;
 }
 footer > p {
     position: absolute;
-    top: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
     left: 1rem;
     margin: 0;
     font-size: 2rem;
@@ -39,7 +46,6 @@ footer > p {
 
 .count_btn, .worker_btn {
     padding: 2rem;
-    margin: 1rem 0;
     background-color: beige;
 }
 .count_btn > button, 

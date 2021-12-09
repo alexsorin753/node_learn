@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    // footer 
+    // (function main_minHeight() {
+    //     const main = document.querySelector('body > main');
+    //     const header = document.querySelector('body > header');
+    //     const footer = document.querySelector('body > footer');
+
+    //     let header_height = parseInt( window.getComputedStyle(header).height );
+    //     let footer_height = parseInt( window.getComputedStyle(footer).height );
+
+    //     main.style.minHeight = window.innerHeight - header_height - footer_height + 'px';
+    // })();
+
     // count
     (function count() {
         const btn = document.querySelector('.count_btn > button');
@@ -9,8 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if(count_num === 0) count.children[0].style.color = 'green';
             count.children[0].textContent = ++count_num;
         });
-
-
     })(); 
 
 
@@ -59,5 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
     })();
 
     // clock set inretval
+    
 })
 
