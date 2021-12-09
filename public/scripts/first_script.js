@@ -69,7 +69,13 @@ document.addEventListener('DOMContentLoaded', function() {
         console.timeEnd('time_this');         
     })();
 
-    // clock set inretval
-    
-})
+    // clock - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#setinterval
+    function time() {
+        const date_el = document.getElementsByClassName('clock')[0];
+
+        let date = new Date();
+        let time = date.toLocaleTimeString();
+        date_el.textContent = time;
+    }; time(); setInterval(time, 1000);
+});
 
