@@ -45,8 +45,9 @@ footer > p {
 }
 
 body > main > div {
-    padding: 2rem;
+    padding: 1px 2rem 2rem 2rem;
     background-color: beige;
+    font-size: 2rem;
 }
 .count_btn > button, 
 .worker_btn > button {
@@ -76,10 +77,7 @@ body > main > div {
     padding-left: 1rem;
 }
 
-.async_internal_img > p {
-    margin: 0;
-    font-size: 2rem;
-}
-.async_internal_img > img {
+.async_internal_img > img,
+.async_external_img > img {
     height: 40rem;
 }
