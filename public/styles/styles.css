@@ -11,7 +11,7 @@ body, html {
     margin: 0;
 }
 body {
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
     background-color: bisque;
 }
 body > header {
@@ -26,7 +26,7 @@ body > header {
 body > main > div {
     margin-bottom: 1rem;
 }
-/*resolve footer*/
+
 footer {
     position: absolute;
     bottom: 0;
@@ -44,7 +44,7 @@ footer > p {
     color: white;
 }
 
-.count_btn, .worker_btn {
+body > main > div {
     padding: 2rem;
     background-color: beige;
 }
@@ -67,16 +67,19 @@ footer > p {
     font-size: 2rem;
 }
 
-
-
 .async_example {
-    background-color: beige;
-    padding: 2rem;
     font-size: 2.5rem;
     color: green;
 }
 .async_example > p {
-    font-size: 1.8rem !important;
     color: black;
     padding-left: 1rem;
+}
+
+.async_internal_img > p {
+    margin: 0;
+    font-size: 2rem;
+}
+.async_internal_img > img {
+    height: 40rem;
 }

@@ -77,5 +77,62 @@ document.addEventListener('DOMContentLoaded', function() {
         let time = date.toLocaleTimeString();
         date_el.textContent = time;
     }; time(); setInterval(time, 1000);
+
+    
+    // async callback example 1 using internal file
+    function loadAsset(url, type, callback) {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.responseType = type;
+
+        xhr.onload = function() {
+            callback(xhr.response);
+        }
+
+        xhr.send();
+    }
+
+    function displayImage(blob) {
+        let objectURL = URL.createObjectURL(blob);
+
+        let image = document.createElement('img');
+        image.src = objectURL;
+        document.getElementsByClassName('async_internal_img')[0].append(image);
+    }
+    loadAsset('/images/tao-paipai.jpg', 'blob', displayImage);
+
+    // async callback example 2 using external link
+    function getURL(url, callback) {
+        let request = new XMLHttpRequest();
+        request.open('GET', url);
+        request.responseType = 'blob';
+
+        request.onload = function() {
+            callback(request.response)
+        }
+        request.send();
+    };
+    function displayExImage(blob) {
+        let image = document.createElement('img');
+        image.src = URL.createObjectURL(blob);
+
+        document.getElementsByClassName('async_external_img')[0].append(image);        
+    }
+    getURL('https://upload.wikimedia.org/wikipedia/en/4/4c/GokumangaToriyama.png', displayExImage);
+
+    // without callback
+    // function getURL(url, type) {
+    //     let request = new XMLHttpRequest();
+    //     request.open('GET', url);
+    //     request.responseType = type;
+
+    //     request.onload = function() {
+    //         let image = document.createElement('img');
+    //         image.src = URL.createObjectURL(request.response);
+
+    //         document.getElementsByClassName('async_external_img')[0].append(image);
+    //     }
+    //     request.send();
+    // }; getURL('https://upload.wikimedia.org/wikipedia/en/4/4c/GokumangaToriyama.png', 'blob');
 });
 
