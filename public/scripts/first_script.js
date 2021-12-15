@@ -101,13 +101,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     loadAsset('/images/tao-paipai.jpg', 'blob', displayImage);
 
+    // ------------------------------------------------------------------
+
     // async callback example 2 using external link
     function getURL(url, callback) {
         let request = new XMLHttpRequest();
         request.open('GET', url);
         request.responseType = 'blob';
 
-        request.onload = function() {
+        request.onload = function() {      
             callback(request.response)
         }
         request.send();
@@ -134,5 +136,39 @@ document.addEventListener('DOMContentLoaded', function() {
     //     }
     //     request.send();
     // }; getURL('https://upload.wikimedia.org/wikipedia/en/4/4c/GokumangaToriyama.png', 'blob');
+
+    // my callback
+    // calling back a function does not mean the called back function is asynchronous;
+    // https://bytearcher.com/articles/does-taking-a-callback-make-a-function-asynchronous/
+    function mycallback(callback) {
+        console.log('callback 1'); callback(); console.log('callback 3');
+    }; mycallback(calledback);
+
+    function calledback() {
+        // synchronous callback    
+        // console.log('callback 2');
+
+        // asynchronous callback
+        setTimeout(() => {
+            console.log('callback 2');
+        }, 0);
+    }
+
+    // playing with promises
+    function my_promise() {
+        const elem = document.getElementsByClassName('async_promise_img')[0];
+        let image = document.createElement('IMG');
+        fetch('https://upload.wikimedia.org/wikipedia/en/8/88/Vegeta_Dragon_Ball.jpg')
+        .then(function(response) {
+            if(response.status === 200) return response.blob();
+        }).then(function(blob) {
+            console.log(blob)
+            image.src = URL.createObjectURL(blob);
+            elem.append(image);
+        }).catch(function(err) {
+            elem.insertAdjacentHTML('beforeend', 
+            `<p style='color: red;'>${err} - <span style='color: orange;'>Image not found</span></p>`)
+        })
+    }; my_promise();
 });
 
