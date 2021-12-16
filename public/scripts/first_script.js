@@ -122,21 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     getURL('https://upload.wikimedia.org/wikipedia/en/4/4c/GokumangaToriyama.png', displayExImage);
 
-    // without callback
-    // function getURL(url, type) {
-    //     let request = new XMLHttpRequest();
-    //     request.open('GET', url);
-    //     request.responseType = type;
-
-    //     request.onload = function() {
-    //         let image = document.createElement('img');
-    //         image.src = URL.createObjectURL(request.response);
-
-    //         document.getElementsByClassName('async_external_img')[0].append(image);
-    //     }
-    //     request.send();
-    // }; getURL('https://upload.wikimedia.org/wikipedia/en/4/4c/GokumangaToriyama.png', 'blob');
-
     // my callback
     // calling back a function does not mean the called back function is asynchronous;
     // https://bytearcher.com/articles/does-taking-a-callback-make-a-function-asynchronous/
@@ -162,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(function(response) {
             if(response.status === 200) return response.blob();
         }).then(function(blob) {
-            console.log(blob)
             image.src = URL.createObjectURL(blob);
             elem.append(image);
         }).catch(function(err) {
@@ -170,5 +154,37 @@ document.addEventListener('DOMContentLoaded', function() {
             `<p style='color: red;'>${err} - <span style='color: orange;'>Image not found</span></p>`)
         })
     }; my_promise();
+
+    // displaying the content of a file
+    function get_filecontent() {
+        const elem = document.getElementsByClassName('display_json_content')[0].children[1];
+
+        fetch('data/data.json').then(function(response) {
+            if(response.status === 200) return response.json();
+        }).then(function(obj) {
+            elem.textContent = JSON.stringify(obj);
+        }).catch(function(err) {
+            elem.textContent = err;
+        });
+    }; get_filecontent();
+
+
+    // using requestAnimationFrame
+    // http://www.javascriptkit.com/javatutors/requestanimationframe.shtml
+    function anim() {
+        const elem1 = document.querySelector('.anim > div:last-child');
+        const elem2 = document.querySelector('.anim > div:first-child');
+
+        elem1.addEventListener('click', function() {
+            let num = 0;
+
+            function move() {
+                num += .5; // control speed
+                elem2.style.left = num + 'rem';
+                if(num < 30) requestAnimationFrame(move);
+            }
+            requestAnimationFrame(move);
+        })
+    }; anim();
 });
 
