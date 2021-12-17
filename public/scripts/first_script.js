@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const count = document.querySelector('.worker_btn > p:first-of-type span');
         const status = document.querySelector('.worker_btn > p:last-of-type span');
 
-        console.log(myWorker)
+        // console.log(myWorker)
         btn.addEventListener('click', function() {
             myWorker.postMessage( Number(count.textContent) );
             status.textContent = 'Message posted to worker';
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     (function async_setT() {
         const elem = document.getElementsByClassName('async_example')[0];
 
-        console.time('time_this');
+        console.time('function async_setT');
         function insert(el) {
             elem.insertAdjacentHTML('beforeend', `
                 <p>Message Synchronous ${el + 1}</p>
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         elem.insertAdjacentHTML('beforeend', `
             <p>Message Synchronous outside the loop ${0}</p>
         `);
-        console.timeEnd('time_this');         
+        console.timeEnd('function async_setT');
     })();
 
     // clock - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#setinterval
@@ -176,15 +176,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const elem2 = document.querySelector('.anim > div:first-child');
 
         elem1.addEventListener('click', function() {
-            let num = 0;
+            // animation using requestAnimationFrame
+            // let num = 0;
+            // function move() {
+            //     num += .5; // control speed
+            //     elem2.style.left = num + 'rem';
+            //     if(num < 30) requestAnimationFrame(move);
+            // }
+            // requestAnimationFrame(move);
 
-            function move() {
-                num += .5; // control speed
-                elem2.style.left = num + 'rem';
-                if(num < 30) requestAnimationFrame(move);
-            }
-            requestAnimationFrame(move);
+            // animation using animate
+            elem2.animate([
+                {left: '0'},
+                {left: '30rem'}
+            ], {duration: 1000, fill: 'forwards'});
         })
     }; anim();
+
+    // next week challenge - Active learning: Creating your own stopwatch!
+    //https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#clearing_intervals
+
+    // maybe this ones too:
+    // - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#a_simple_example
+    // - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#active_learning_starting_and_stopping_our_spinner
+    // - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#active_learning_a_reaction_game
 });
 

@@ -99,7 +99,7 @@ body > main > div {
     height: 100%;
     position: absolute;
     top: 0;
-    left: 10rem;
+    left: 0;
     background-color: grey;
     font-size: 3rem;
     line-height: 30rem;
