@@ -193,12 +193,53 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     }; anim();
 
-    // next week challenge - Active learning: Creating your own stopwatch!
-    //https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#clearing_intervals
+    function stop_watch() {
+        const sec_el = document.getElementsByClassName('sec')[0];
+        const min_el = document.getElementsByClassName('min')[0];
+        const hour_el = document.getElementsByClassName('hour')[0];
+        const start_btn = document.querySelector('.stopwatch > button:nth-of-type(1)');
+        const stop_btn =  document.querySelector('.stopwatch > button:nth-of-type(2)');
+        const reset_btn = document.querySelector('.stopwatch > button:nth-of-type(3)');
 
-    // maybe this ones too:
-    // - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#a_simple_example
-    // - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#active_learning_starting_and_stopping_our_spinner
-    // - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals#active_learning_a_reaction_game
+        let sec = 0, min = 0, hour = 0;
+
+        function init_reset() {
+            sec_el.textContent = '00';
+            min_el.textContent = '00';
+            hour_el.textContent = '00';        
+        }; init_reset();
+
+
+        let count;
+        start_btn.addEventListener('click', function() {
+            count = setInterval(() => {
+                if(sec < 59) sec++;
+                else {
+                    sec = 0; min++;
+                }
+
+                if(min > 59) hour++;
+
+                if(sec.toString().length > 1) sec_el.textContent = sec;
+                else sec_el.textContent = '0'+sec;
+                if(min.toString().length > 1) min_el.textContent = min;
+                else min_el.textContent = '0'+min;
+                if(hour.toString().length > 1) hour_el.textContent = hour;
+                else hour_el.textContent = '0'+hour;
+
+            }, 1000);            
+        });
+
+        stop_btn.addEventListener('click', function() {
+            clearInterval(count);
+        });
+
+        reset_btn.addEventListener('click', function() {
+            init_reset(); clearInterval(count);
+            sec = 0, min = 0, hour = 0;
+        });
+
+
+    }; stop_watch();
 });
 
